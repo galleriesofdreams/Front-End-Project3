@@ -35,7 +35,6 @@ See below for the Udacity Style Guide used thoroughout the Front End Nanodegree.
 
 The project files are structured as follows:
 
- * [weather-journal-app](./weather-journal-app)
  * [website](./website)
    * [app.js](./website/app.js)
    * [index.html](./website/index.html)
