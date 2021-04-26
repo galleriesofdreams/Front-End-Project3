@@ -5,6 +5,7 @@
 * [Overview](#overview)
 * [Project-Rubric](#project-rubric)
 * [Style-Guide](#style-guide)
+* [File-Structure](#file-structure)
 
 ## Overview
 
@@ -28,3 +29,22 @@ The project is created in accordance to the following specifications:
 See below for the Udacity Style Guide used thoroughout the Front End Nanodegree.
 
 * [Nanodegree Style Guide](http://udacity.github.io/frontend-nanodegree-styleguide/)
+
+
+## File-Structure
+
+The project files are structured as follows:
+
+$ ./tree-md .
+.
+ * [weather-journal-app](./weather-journal-app)
+ * [commentsOnlyJS](./commentsOnlyJS)
+   * [app.js](./commentsOnlyJS/app.js)
+   * [server.js](./commentsOnlyJS/server.js)
+ * [website](./website)
+   * [app.js](./website/app.js)
+   * [index.html](./website/index.html)
+   * [style.css](./website/style.css)
+ * [server.js](./server.js)
+ * [README.md](./README.md)
+
