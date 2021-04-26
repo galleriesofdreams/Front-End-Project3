@@ -42,4 +42,6 @@ The project files are structured as follows:
    * [style.css](./website/style.css)
  * [server.js](./server.js)
  * [README.md](./README.md)
+ * [package.json](./package.json)
+ * [package-lock.json](./package-lock.json)
 
