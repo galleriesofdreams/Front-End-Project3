@@ -1,6 +1,5 @@
 /* Global Variables */
 const baseURL = 'http://api.openweathermap.org/data/2.5/weather?zip=';
-const zip = document.getElementById('zip').value;
 
 // Personal API Key for OpenWeatherMap API
 const apiKey = '&units=metric&appid=5c1405ed481a64d7eced83e04661eb67';
@@ -14,23 +13,48 @@ document.getElementById('generate').addEventListener('click', generateWeather);
 
 /* Function called by event listener */
 function generateWeather(e){
+    const zip = document.getElementById('zip').value;
+    const feelings = document.getElementById('feelings').value;
     getWeather (baseURL, zip, apiKey)
-}
+    .then (function (weatherData) {
+        const icon = weatherData.weather.icon;
+        const temperature = weatherData.main.temp;
+        const city = weatherData.name;
+        const feeling = feelings;
+        postData('/addWeather', {
+            icon, temperature, city, feeling
+            }).then(() => {
+                updateUI();
+            })  
+        });
+    }
 
-const zip = async
 /* Function to GET Web API Data*/
-
-
+const getWeather = async (baseURL, zip, apiKey) => {
+    // build URL into fetch call
+    const res = await fetch(baseURL+zip+apiKey)
+    // call API
+    try {
+        const weatherData = await res.json();
+        console.log(weatherData)
+        return weatherData;
+    // handle error
+    } catch(error) {
+        console.log("error", error);
+    }
+}
 /* Function to POST data */
-
-{
-    method: 'POST',
-    credentials: 'same-origin',
-    headers: {
+async function postData(url, data) {
+    await fetch(url, {
+        //boilerplate
+        method: 'POST',
+        credentials: 'same-origin',
+        headers: {
         'Content-Type': 'application/json',
-    },
-    //Body data type must match Content-Type
-    body: JSON.stringify(projectData),
+        },
+        //Body data type must match Content-Type
+        body: JSON.stringify(projectData),
+});
 }
 
 /* Function to GET Project Data */
