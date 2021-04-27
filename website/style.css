@@ -1,5 +1,6 @@
 body{
-    background: #fffff8;
+    background-image: url(../media/eberhard-grossgasteiger-NvesrDbsrL4-unsplash.jpg);
+    background-size: contain;
     font-family: -apple-system, BlinkMacSystemFont, sans-serif;
 }
 

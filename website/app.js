@@ -58,3 +58,15 @@ async function postData(url, data) {
 }
 
 /* Function to GET Project Data */
+const updateUI = async() => {
+    const request = await fetch('/retrievedData');
+    try{
+        const lastEntry = await request.json();
+        document.getElementById('icon').innerText = lastEntry.icon;
+        document.getElementById('temperature').innerText = lastEntry.temperature;
+        document.getElementById('city').innerText = lastEntry.city;
+        document.getElementById('feelings').innerText = lastEntry.feelings;
+        } catch(error){
+            console.log('error', error);
+    }
+}
