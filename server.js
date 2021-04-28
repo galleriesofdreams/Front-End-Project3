@@ -1,5 +1,5 @@
 // Setup empty JS object to act as endpoint for all routes
-projectData = {};
+const projectData = {};
 
 // Require Express to run server and routes
 const express = require('express');
@@ -32,20 +32,13 @@ const server = app.listen(port, () => {
 // Initialize all route with a callback function
 // Callback function to complete GET '/all'
 app.get('/retrieveData', (req, res) => {
-    console.log('Return projectData');
+    console.log('Retrieve projectData');
     res.send(projectData);
 });
 
 // Post Route
-app.post('/addData', (req, res) => {
-    res.send('data received');
+app.post('/addWeather', (req, res) => {
+    projectData = req.body;
 });
 
-const projectData = [];
-
-app.post('/lastEntry', addEntry);
-
-function addEntry (req,res){
-    projectData.push(req.body);
-};
 

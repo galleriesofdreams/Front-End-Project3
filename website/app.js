@@ -59,7 +59,7 @@ async function postData(url, data) {
 
 /* Function to GET Project Data */
 const updateUI = async() => {
-    const request = await fetch('/retrievedData');
+    const request = await fetch('/retrieveData');
     try{
         const lastEntry = await request.json();
         document.getElementById('icon').innerText = lastEntry.icon;
