@@ -16,6 +16,7 @@ app.use(bodyParser.json());
 
 // Cors for cross origin allowance
 const cors = require('cors');
+const { response } = require('express');
 app.use(cors());
 
 // Initialize the main project folder
@@ -39,6 +40,8 @@ app.get('/retrieveData', (req, res) => {
 // Post Route
 app.post('/addWeather', (req, res) => {
     projectData = req.body;
+    response.send('Request received!');
+    console.log(request);
 });
 
 
