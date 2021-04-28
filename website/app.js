@@ -53,7 +53,7 @@ async function postData(url, data) {
         'Content-Type': 'application/json',
         },
         //Body data type must match Content-Type
-        body: JSON.stringify(projectData),
+        body: JSON.stringify(data),
 });
 }
 
