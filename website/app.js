@@ -53,11 +53,11 @@ async function postData(url, data) {
         'Content-Type': 'application/json',
         },
         //Body data type must match Content-Type
-        body: JSON.stringify(data),
+        body: JSON.stringify(data),   
 });
 }
 
-/* Function to GET Project Data */
+/* Function to update UI */
 const updateUI = async() => {
     const request = await fetch('/retrieveData');
     try{
