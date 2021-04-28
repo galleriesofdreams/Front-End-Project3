@@ -3,7 +3,6 @@
 body{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: auto;
     justify-items: center;
     align-items: center;
     background: -webkit-linear-gradient(to right, #EF629F, #EECDA3);  /* Chrome 10-25, Safari 5.1-6 */
@@ -13,6 +12,7 @@ body{
 #app{
     display: grid;
     grid-column-start: 2;
+    grid-row-start:2;
     background-image: url(media/eberhard-grossgasteiger-NvesrDbsrL4-unsplash.jpg);
     background-size: contain;
     width: 500px;
@@ -94,6 +94,13 @@ button{
     box-shadow: 2px 4px 5px #444;
     margin: 10px;
 }
+
+button:hover{
+    cursor: pointer;
+    background: #EF629F;
+    transition: 0.6s;
+}
+
 h1{
     font-size: 36px;
 }
