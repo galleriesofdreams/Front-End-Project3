@@ -6,7 +6,7 @@ const apiKey = '&units=metric&appid=5c1405ed481a64d7eced83e04661eb67';
 
 // Create a new date instance dynamically with JS
 let d = new Date();
-let newDate = d.getMonth()+'.'+ d.getDate()+'.'+ d.getFullYear();
+let newDate = d.getMonth()+1+'.'+ d.getDate()+'.'+ d.getFullYear();
 
 // Event listener to add function to existing HTML DOM element
 document.getElementById('generate').addEventListener('click', generateWeather);
@@ -18,14 +18,15 @@ function generateWeather(e){
     getWeather (baseURL, zip, apiKey)
     .then (function (weatherData) {
         const temperature = weatherData.main.temp;
-        const city = weatherData.name;
         const feeling = feelings;
         postData('/addWeather', {
-            temperature, city, feeling
+            temp: temperature, date: newDate, feeling: feeling
             })
-    .then(() => updateUI());
-            })  
-        };
+            .then(() => {
+                updateUI()
+            });
+        });  
+}
 
 /* Function to GET Web API Data*/
 const getWeather = async (baseURL, zip, apiKey) => {
@@ -38,7 +39,7 @@ const getWeather = async (baseURL, zip, apiKey) => {
         return weatherData;
     // handle error
     } catch(error) {
-        console.log("error", error);
+        console.log('error', error);
     }
 }
 /* Function to POST data */
@@ -60,6 +61,7 @@ const postData = async (url = '', data = {}) => {
     } catch(error) {
         console.log('error', error);
     };
+}
 
 /* Function to GET Project Data */
 const getData = async (url='') =>{
@@ -77,10 +79,10 @@ const updateUI = async () => {
     const request = await fetch('/getData');
     try{
         const lastEntry = await request.json();
-        document.getElementById('date').innerHTML = lastEntry[0].date;
-        document.getElementById('temp').innerHTML = lastEntry[0].temperature;
-        document.getElementById('content').innerHTML = lastEntry[0].content;
+        document.getElementById('date').innerHTML = lastEntry["date"];
+        document.getElementById('temp').innerHTML = lastEntry["temp"];
+        document.getElementById('content').innerHTML = lastEntry["feeling"];
         } catch(error){
             console.log('error', error);
     }
-}};
+};
