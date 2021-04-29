@@ -33,26 +33,44 @@ body{
 }
 
 .entry{
-    
+    font-size: 30px;
+    font-family: 'Mukta', sans-serif;
+    border: 1px solid #2d2d2d;
+    border-radius: 25px;
 }
 
 #date{
-
+    font-size: 10px;
+    font-family: 'Mukta', sans-serif;
+    border: 1px solid #2d2d2d;
+    border-radius: 25px;
 }
 
 #temp{
-
+    font-size: 10px;
+    font-family: 'Mukta', sans-serif;
+    border: 1px solid #2d2d2d;
+    border-radius: 25px;
 }
 
 #content{
-
+    font-size: 10px;
+    font-family: 'Mukta', sans-serif;
+    border: 1px solid #2d2d2d;
+    border-radius: 25px;
 }
 
 .headline {
-
+    font-size: 10px;
+    font-family: 'Mukta', sans-serif;
+    border: 1px solid #2d2d2d;
+    border-radius: 25px;
 }
 .title{
-
+    font-size: 10px;
+    font-family: 'Mukta', sans-serif;
+    border: 1px solid #2d2d2d;
+    border-radius: 25px;
 }
 
 /*  Basic Styling To Override Default For Basic HTML Elements */

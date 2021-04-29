@@ -16,7 +16,6 @@ app.use(bodyParser.json());
 
 // Cors for cross origin allowance
 const cors = require('cors');
-const { response } = require('express');
 app.use(cors());
 
 // Initialize the main project folder
@@ -32,16 +31,18 @@ const server = app.listen(port, () => {
 
 // Initialize all route with a callback function
 // Callback function to complete GET '/all'
-app.get('/retrieveData', (req, res) => {
+app.get('/getData', (req, res) => {
     console.log('Retrieve projectData');
     res.send(projectData);
 });
 
 // Post Route
+let data = [];
+
 app.post('/addWeather', (req, res) => {
-    projectData = req.body;
-    response.send('Request received!');
-    console.log(request);
+    console.log(req.body);
+    data.push(req.body);
+    projectData['newEntry'] = data;
 });
 
 

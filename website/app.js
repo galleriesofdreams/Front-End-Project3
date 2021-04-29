@@ -17,26 +17,24 @@ function generateWeather(e){
     const feelings = document.getElementById('feelings').value;
     getWeather (baseURL, zip, apiKey)
     .then (function (weatherData) {
-        const icon = weatherData.weather.icon;
         const temperature = weatherData.main.temp;
         const city = weatherData.name;
         const feeling = feelings;
         postData('/addWeather', {
-            icon, temperature, city, feeling
-            }).then(() => {
-                updateUI();
+            temperature, city, feeling
+            })
+    .then(() => updateUI());
             })  
-        });
-    }
+        };
 
 /* Function to GET Web API Data*/
 const getWeather = async (baseURL, zip, apiKey) => {
     // build URL into fetch call
-    const res = await fetch(baseURL+zip+apiKey)
+    const res = await fetch(baseURL+zip+apiKey);
     // call API
     try {
         const weatherData = await res.json();
-        console.log(weatherData)
+        console.log(weatherData);
         return weatherData;
     // handle error
     } catch(error) {
@@ -44,8 +42,8 @@ const getWeather = async (baseURL, zip, apiKey) => {
     }
 }
 /* Function to POST data */
-async function postData(url, data) {
-    await fetch(url, {
+const postData = async (url = '', data = {}) => {
+    const res = await fetch(url, {
         //boilerplate
         method: 'POST',
         credentials: 'same-origin',
@@ -53,20 +51,36 @@ async function postData(url, data) {
         'Content-Type': 'application/json',
         },
         //Body data type must match Content-Type
-        body: JSON.stringify(data),   
+        body: JSON.stringify(data),
 });
-}
+    try {
+        const newWeatherData = await res.json();
+        console.log(newWeatherData);
+        return newWeatherData;
+    } catch(error) {
+        console.log('error', error);
+    };
+
+/* Function to GET Project Data */
+const getData = async (url='') =>{
+    const request = await fetch(url);
+    try {
+        const getData = await request.json()
+    }
+    catch(error){
+        console.log('error', error);
+    }
+};
 
 /* Function to update UI */
-const updateUI = async() => {
-    const request = await fetch('/retrieveData');
+const updateUI = async () => {
+    const request = await fetch('/getData');
     try{
         const lastEntry = await request.json();
-        document.getElementById('icon').innerText = lastEntry.icon;
-        document.getElementById('temperature').innerText = lastEntry.temperature;
-        document.getElementById('city').innerText = lastEntry.city;
-        document.getElementById('feelings').innerText = lastEntry.feelings;
+        document.getElementById('date').innerHTML = lastEntry[0].date;
+        document.getElementById('temp').innerHTML = lastEntry[0].temperature;
+        document.getElementById('content').innerHTML = lastEntry[0].content;
         } catch(error){
             console.log('error', error);
     }
-}
+}};
